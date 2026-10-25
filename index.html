@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Samuel James Garcia</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #07050a;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(217, 4, 41, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 80% 75%, rgba(114, 9, 183, 0.16) 0%, transparent 45%);
+      color: #f8f9fa;
+      font-family: 'VT323', monospace;
+      overflow-x: hidden;
+    }
+
+    .font-pixel-title {
+      font-family: 'Press Start 2P', monospace;
+      line-height: 1.4;
+    }
+
+    .pixel-box {
+      background: #130e1c;
+      border: 4px solid #ffb703;
+      box-shadow:
+        0 0 0 4px #050308,
+        inset 0 0 0 4px #3c1642,
+        0 8px 0 0 #050308;
+    }
+
+    .pixel-box-pink {
+      background: #190d22;
+      border: 4px solid #d90429;
+      box-shadow:
+        0 0 0 4px #050308,
+        inset 0 0 0 4px #4a154b,
+        0 8px 0 0 #050308;
+    }
+
+    .pixel-btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      line-height: 1.4;
+      padding: 10px 12px;
+      border: 3px solid #050308;
+      box-shadow:
+        inset -3px -3px 0px rgba(0, 0, 0, 0.45),
+        inset 3px 3px 0px rgba(255, 255, 255, 0.25),
+        0 4px 0 #050308;
+      transition: transform 0.06s ease, box-shadow 0.06s ease, filter 0.12s ease;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .pixel-btn:hover:not(:disabled) {
+      filter: brightness(1.12);
+    }
+
+    .pixel-btn:active:not(:disabled),
+    .pixel-btn.active-press {
+      transform: translateY(4px);
+      box-shadow:
+        inset -2px -2px 0px rgba(0, 0, 0, 0.45),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.2),
+        0 0px 0 #050308;
+    }
+
+    .pixel-input {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      background: #0a0710;
+      border: 3px solid #6c2bd9;
+      color: #fff8e7;
+      padding: 6px 10px;
+      outline: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    .pixel-input:focus {
+      border-color: #ffb703;
+    }
+
+    #pixelCanvas {
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-crisp-edges;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    .eq-bar {
+      width: 6px;
+      background: #ffb703;
+      transition: height 0.08s steps(3);
+    }
+
+    .scanlines {
+      background:
+        radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.55) 100%),
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          rgba(0, 0, 0, 0.28) 50%,
+          rgba(0, 0, 0, 0.28)
+        );
+      background-size: 100% 100%, 100% 4px;
+      pointer-events: none;
+    }
+
+    .fazbear-checker {
+      height: 10px;
+      background-image:
+        linear-gradient(45deg, #000 25%, transparent 25%),
+        linear-gradient(-45deg, #000 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #000 75%),
+        linear-gradient(-45deg, transparent 75%, #000 75%);
+      background-size: 10px 10px;
+      background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+      background-color: #ffffff;
+      border-top: 2px solid #d90429;
+      border-bottom: 2px solid #d90429;
+    }
+
+    @keyframes recBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0.15; }
+    }
+    .rec-dot {
+      animation: recBlink 1s infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center p-2 sm:p-4">
+
+  <!-- Compact Header with Live Philippines Clock -->
+  <header class="max-w-4xl w-full mx-auto mb-3">
+    <div class="pixel-box overflow-hidden">
+      <div class="fazbear-checker w-full"></div>
+      <div class="px-3 py-2.5 sm:px-4 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5">
+          <span class="rec-dot inline-block w-3.5 h-3.5 bg-[#d90429] border-2 border-black"></span>
+          <h1 id="headerTitle" class="font-pixel-title text-xs sm:text-sm text-[#ffb703]">
+            HAPPY BIRTHDAY, SAM!
+          </h1>
+        </div>
+
+        <!-- Live Philippines Time + Quick Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="bg-[#09060f] border-2 border-[#38b000] px-2.5 py-1 flex items-center gap-1.5 text-base sm:text-lg">
+            <span class="text-[#38b000]">🇵🇭 PH:</span>
+            <span id="phLiveClock" class="text-[#ffb703] font-bold tracking-wider">--:--:-- PM</span>
+          </div>
+
+          <div class="bg-[#09060f] border-2 border-[#d90429] px-2.5 py-1 flex items-center gap-1.5 text-base sm:text-lg">
+            <span>🕯️</span>
+            <span id="candleCounterText" class="text-[#ffb703] font-bold">5 / 5</span>
+          </div>
+
+          <button id="btnCustomizeToggle" type="button" class="pixel-btn bg-[#7209b7] text-white">
+            🎨 EDIT
+          </button>
+
+          <button id="btnMuteToggle" type="button" class="pixel-btn bg-[#221a2e] text-[#38b000]" aria-label="Toggle Sound">
+            🔊 ON
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Clean Visual Stage -->
+  <main class="max-w-4xl w-full mx-auto flex flex-col gap-3">
+
+    <section class="pixel-box relative overflow-hidden p-2 sm:p-3 flex flex-col items-center">
+
+      <!-- Pixel Canvas Container (Fazbear Cam View) -->
+      <div id="canvasWrapper" class="relative w-full aspect-[4/3] max-h-[470px] bg-[#08050d] border-4 border-[#3a2d4c] overflow-hidden flex items-center justify-center">
+        <canvas id="pixelCanvas" width="200" height="150" class="w-full h-full block"></canvas>
+        <div class="scanlines absolute inset-0"></div>
+
+        <!-- Top-Right Live Cam Overlay on Canvas -->
+        <div class="absolute top-2.5 right-3 z-10 pointer-events-none bg-black/70 border border-[#ffb703]/60 px-2 py-0.5 text-sm sm:text-base text-[#38b000] flex items-center gap-1.5">
+          <span>CAM 01A •</span>
+          <span id="canvasClockOverlay" class="text-[#ffb703] font-bold">--:--:--</span>
+        </div>
+
+        <!-- Celebration Banner (shown when candles are out) -->
+        <div id="celebrationBanner" class="hidden absolute top-10 left-1/2 -translate-x-1/2 z-10 pointer-events-none w-[90%] max-w-sm">
+          <div class="pixel-box-pink px-3 py-2 text-center animate-bounce">
+            <p id="celebrationHeading" class="font-pixel-title text-xs sm:text-sm text-[#ffb703]">
+              🍕 HAPPY BIRTHDAY, SAM! 🍕
+            </p>
+            <p id="celebrationSubtext" class="text-base sm:text-lg text-[#38b000] mt-0.5">
+              ♪ Playing Birthday Music Box ♪
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact Blow Meter + Action Bar + Music Bar -->
+      <div class="w-full mt-2.5 bg-[#0d0814] border-2 border-[#5a189a] p-2.5 flex flex-col gap-2">
+        <!-- Segmented Pixel Blow Bar -->
+        <div class="flex items-center gap-2">
+          <span class="font-pixel-title text-[9px] text-[#ffb703] shrink-0">💨 BLOW:</span>
+          <div class="flex-1 h-4 bg-[#050308] border-2 border-[#7209b7] p-0.5">
+            <div id="windBarFill" class="h-full bg-gradient-to-r from-[#38b000] via-[#ffb703] to-[#d90429] transition-all duration-75" style="width: 0%;"></div>
+          </div>
+          <!-- Equalizer Bars -->
+          <div id="eqContainer" class="flex items-end gap-1 h-4 px-1.5 py-0.5 bg-[#07050a] border border-[#4a154b] shrink-0">
+            <div class="eq-bar h-1"></div>
+            <div class="eq-bar h-2"></div>
+            <div class="eq-bar h-1"></div>
+            <div class="eq-bar h-3"></div>
+            <div class="eq-bar h-1"></div>
+          </div>
+        </div>
+
+        <!-- All Controls in One Clean Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+          <button id="btnHoldBlow" type="button" class="pixel-btn bg-[#d90429] text-white py-2.5">
+            💨 HOLD BLOW
+          </button>
+
+          <button id="btnMicToggle" type="button" class="pixel-btn bg-[#38b000] text-[#050308] py-2.5">
+            <span id="micBtnText">🎙️ MIC BLOW</span>
+          </button>
+
+          <button id="btnRelight" type="button" class="pixel-btn bg-[#ffb703] text-[#050308] py-2.5">
+            🔥 RELIGHT
+          </button>
+
+          <button id="btnPlayPauseMusic" type="button" class="pixel-btn bg-[#4cc9f0] text-[#050308] py-2.5">
+            ▶ MUSIC
+          </button>
+
+          <button id="btnPartyHorn" type="button" class="pixel-btn bg-[#7209b7] text-white py-2.5 col-span-2 sm:col-span-1">
+            🥳 PARTY HORN
+          </button>
+        </div>
+      </div>
+
+      <!-- Optional Compact Customizer Drawer (Hidden unless EDIT clicked) -->
+      <div id="customizerPanel" class="hidden w-full mt-2.5 bg-[#0d0814] border-2 border-[#ffb703] p-3 flex flex-col gap-2.5">
+        <div class="flex items-center justify-between">
+          <span class="font-pixel-title text-[10px] text-[#ffb703]">🎨 CAKE SETTINGS</span>
+          <button id="btnCloseCustomizer" type="button" class="text-base text-[#d90429] font-bold">
+            [✕]
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+          <input id="inputRecipient" type="text" maxlength="24" value="Samuel" placeholder="Name" class="pixel-input w-full" />
+
+          <select id="selectCandleCount" class="pixel-input cursor-pointer">
+            <option value="1">1 Candle</option>
+            <option value="3">3 Candles</option>
+            <option value="5" selected>5 Candles</option>
+            <option value="7">7 Candles</option>
+            <option value="9">9 Candles</option>
+          </select>
+
+          <select id="selectCakeFlavor" class="pixel-input cursor-pointer">
+            <option value="fazbear" selected>🐻 Fazbear Choco</option>
+            <option value="strawberry">🍓 Chica Berry</option>
+            <option value="chocolate">🍫 Freddy Fudge</option>
+            <option value="vanilla">🍦 Golden Freddy</option>
+            <option value="matcha">🍵 Glitchtrap Mint</option>
+            <option value="galaxy">🌌 Bonnie Cosmic</option>
+          </select>
+
+          <select id="selectMusicStyle" class="pixel-input cursor-pointer">
+            <option value="toreador" selected>🐻 Toreador + Bday</option>
+            <option value="musicbox">✨ Music Box</option>
+            <option value="nes">🕹️ 8-Bit NES</option>
+            <option value="arcade">🍕 Arcade Synth</option>
+          </select>
+        </div>
+
+        <button id="btnApplyCustomization" type="button" class="pixel-btn bg-[#38b000] text-[#050308] w-full py-2">
+          ✓ APPLY
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // ==========================================
+      // 1. STATE & CAKE FLAVORS
+      // ==========================================
+      const FLAVORS = {
+        fazbear: {
+          spongeTop: '#7f4f24',
+          spongeMid: '#582f0e',
+          spongeBot: '#3d1e05',
+          icing: '#ffb703',
+          icingShadow: '#fb8500',
+          filling: '#d90429',
+          sprinkles: ['#d90429', '#7209b7', '#ffffff', '#4cc9f0'],
+          cherry: '#d90429'
+        },
+        strawberry: {
+          spongeTop: '#ff8fab',
+          spongeMid: '#fb6f92',
+          spongeBot: '#e05780',
+          icing: '#fff0f5',
+          icingShadow: '#ffd6e4',
+          filling: '#ffccd5',
+          sprinkles: ['#4deeea', '#ffd166', '#9b5de5', '#06d6a0'],
+          cherry: '#ff1e56'
+        },
+        chocolate: {
+          spongeTop: '#6f4518',
+          spongeMid: '#583101',
+          spongeBot: '#432818',
+          icing: '#f3d5b5',
+          icingShadow: '#d4a276',
+          filling: '#a47148',
+          sprinkles: ['#ff5e97', '#ffd166', '#4deeea', '#ffffff'],
+          cherry: '#e63946'
+        },
+        vanilla: {
+          spongeTop: '#ffe599',
+          spongeMid: '#ffd166',
+          spongeBot: '#f4a261',
+          icing: '#ffffff',
+          icingShadow: '#e2e8f0',
+          filling: '#7209b7',
+          sprinkles: ['#7209b7', '#d90429', '#ffb703', '#4cc9f0'],
+          cherry: '#d90429'
+        },
+        matcha: {
+          spongeTop: '#80ed99',
+          spongeMid: '#57cc99',
+          spongeBot: '#38a3a5',
+          icing: '#f8f9fa',
+          icingShadow: '#d8f3dc',
+          filling: '#7209b7',
+          sprinkles: ['#9b5de5', '#ffd166', '#ffffff', '#ff9f1c'],
+          cherry: '#7209b7'
+        },
+        galaxy: {
+          spongeTop: '#7209b7',
+          spongeMid: '#560bad',
+          spongeBot: '#3a0ca3',
+          icing: '#4cc9f0',
+          icingShadow: '#4361ee',
+          filling: '#f72585',
+          sprinkles: ['#ffd166', '#ffffff', '#06d6a0', '#ff5e97'],
+          cherry: '#ffd166'
+        }
+      };
+
+      const CANDLE_COLORS = [
+        { body: '#d90429', stripe: '#ffffff' },
+        { body: '#7209b7', stripe: '#ffb703' },
+        { body: '#ffb703', stripe: '#111111' },
+        { body: '#4cc9f0', stripe: '#ffffff' },
+        { body: '#38b000', stripe: '#ffffff' }
+      ];
+
+      const state = {
+        recipientName: 'Sam',
+        flavorKey: 'fazbear',
+        candleCount: 5,
+        candles: [],
+        allExtinguished: false,
+        blowPower: 0,
+        isHoldingBlow: false,
+        micActive: false,
+        soundMuted: false,
+        musicPlaying: false,
+        musicStyle: 'toreador',
+        tick: 0,
+        noseHonkFlash: 0,
+        pointerDown: false,
+        stars: [],
+        balloons: [],
+        smokeParticles: [],
+        confettiParticles: [],
+        floatingNotes: []
+      };
+
+      // ==========================================
+      // 2. DOM ELEMENTS
+      // ==========================================
+      const canvas = document.getElementById('pixelCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+
+      const headerTitle = document.getElementById('headerTitle');
+      const phLiveClock = document.getElementById('phLiveClock');
+      const canvasClockOverlay = document.getElementById('canvasClockOverlay');
+      const candleCounterText = document.getElementById('candleCounterText');
+      const btnCustomizeToggle = document.getElementById('btnCustomizeToggle');
+      const btnMuteToggle = document.getElementById('btnMuteToggle');
+      const celebrationBanner = document.getElementById('celebrationBanner');
+      const celebrationHeading = document.getElementById('celebrationHeading');
+      const celebrationSubtext = document.getElementById('celebrationSubtext');
+      const windBarFill = document.getElementById('windBarFill');
+      const btnHoldBlow = document.getElementById('btnHoldBlow');
+      const btnMicToggle = document.getElementById('btnMicToggle');
+      const micBtnText = document.getElementById('micBtnText');
+      const btnRelight = document.getElementById('btnRelight');
+
+      const eqBars = Array.from(document.querySelectorAll('#eqContainer .eq-bar'));
+      const selectMusicStyle = document.getElementById('selectMusicStyle');
+      const btnPlayPauseMusic = document.getElementById('btnPlayPauseMusic');
+      const btnPartyHorn = document.getElementById('btnPartyHorn');
+
+      const customizerPanel = document.getElementById('customizerPanel');
+      const btnCloseCustomizer = document.getElementById('btnCloseCustomizer');
+      const inputRecipient = document.getElementById('inputRecipient');
+      const selectCandleCount = document.getElementById('selectCandleCount');
+      const selectCakeFlavor = document.getElementById('selectCakeFlavor');
+      const btnApplyCustomization = document.getElementById('btnApplyCustomization');
+
+      // ==========================================
+      // 3. LIVE PHILIPPINES CLOCK (Asia/Manila)
+      // ==========================================
+      function getPhilippinesTimeString() {
+        try {
+          return new Intl.DateTimeFormat('en-PH', {
+            timeZone: 'Asia/Manila',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+          }).format(new Date());
+        } catch (e) {
+          const now = new Date();
+          const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+          const phDate = new Date(utcMs + 8 * 3600000);
+          return phDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+        }
+      }
+
+      function updatePhilippinesClock() {
+        const timeStr = getPhilippinesTimeString();
+        phLiveClock.textContent = timeStr;
+        canvasClockOverlay.textContent = timeStr + ' PHT';
+      }
+
+      setInterval(updatePhilippinesClock, 1000);
+      updatePhilippinesClock();
+
+      // ==========================================
+      // 4. WEB AUDIO API 8-BIT SYNTHESIZER & MIC
+      // ==========================================
+      let audioCtx = null;
+      let melodyTimer = null;
+      let currentStepIndex = 0;
+
+      let micStream = null;
+      let micAnalyser = null;
+      let micDataArray = null;
+
+      function ensureAudioContext() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+          }
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      const NOTE_FREQ = {
+        'C3': 130.81, 'D3': 146.83, 'E3': 164.81, 'F3': 174.61, 'G3': 196.00, 'Ab3': 207.65, 'A3': 220.00, 'Bb3': 233.08, 'B3': 246.94,
+        'C4': 261.63, 'D4': 293.66, 'E4': 329.63, 'F4': 349.23, 'F#4': 369.99, 'G4': 392.00, 'Ab4': 415.30, 'A4': 440.00, 'Bb4': 466.16, 'B4': 493.88,
+        'C5': 523.25, 'D5': 587.33, 'E5': 659.25, 'F5': 698.46, 'G5': 783.99, 'A5': 880.00
+      };
+
+      const TOREADOR_AND_BIRTHDAY_SCORE = [
+        { note: 'C5', bass: 'F3', chord: ['F4', 'A4', 'C5'], dur: 2.5 },
+        { note: 'D5', bass: 'F3', chord: ['F4', 'Bb4', 'D5'], dur: 0.5 },
+        { note: 'C5', bass: 'F3', chord: ['F4', 'A4', 'C5'], dur: 1.5 },
+        { note: 'A4', bass: 'F3', chord: ['F4', 'A4', 'C5'], dur: 1.5 },
+        { note: 'A4', bass: 'C3', chord: ['E4', 'G4', 'C5'], dur: 1.5 },
+        { note: 'G4', bass: 'C3', chord: ['E4', 'G4', 'Bb4'], dur: 0.5 },
+        { note: 'F#4', bass: 'D3', chord: ['D4', 'F#4', 'A4'], dur: 0.5 },
+        { note: 'G4', bass: 'G3', chord: ['D4', 'G4', 'Bb4'], dur: 0.5 },
+        { note: 'A4', bass: 'C3', chord: ['F4', 'A4', 'C5'], dur: 3.0 },
+
+        { note: 'C4', bass: 'C3', chord: ['C4', 'E4', 'G4'], dur: 1.5 },
+        { note: 'C4', bass: 'C3', chord: ['C4', 'E4', 'G4'], dur: 0.5 },
+        { note: 'D4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 2 },
+        { note: 'C4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 2 },
+        { note: 'F4', bass: 'F3', chord: ['A3', 'C4', 'F4'], dur: 2 },
+        { note: 'E4', bass: 'C3', chord: ['G3', 'C4', 'E4'], dur: 4 },
+
+        { note: 'C4', bass: 'C3', chord: ['C4', 'E4', 'G4'], dur: 1.5 },
+        { note: 'C4', bass: 'C3', chord: ['C4', 'E4', 'G4'], dur: 0.5 },
+        { note: 'D4', bass: 'C3', chord: ['E3', 'G3', 'C4'], dur: 2 },
+        { note: 'C4', bass: 'C3', chord: ['E3', 'G3', 'C4'], dur: 2 },
+        { note: 'G4', bass: 'C3', chord: ['G3', 'Bb3', 'E4'], dur: 2 },
+        { note: 'F4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 4 },
+
+        { note: 'C4', bass: 'C3', chord: ['C4', 'E4', 'G4'], dur: 1.5 },
+        { note: 'C4', bass: 'C3', chord: ['C4', 'E4', 'G4'], dur: 0.5 },
+        { note: 'C5', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 2 },
+        { note: 'A4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 2 },
+        { note: 'F4', bass: 'F3', chord: ['A3', 'C4', 'F4'], dur: 2 },
+        { note: 'E4', bass: 'Bb3', chord: ['Bb3', 'D4', 'F4'], dur: 2 },
+        { note: 'D4', bass: 'Bb3', chord: ['Bb3', 'D4', 'F4'], dur: 3 },
+
+        { note: 'Bb4', bass: 'Bb3', chord: ['Bb3', 'D4', 'G4'], dur: 1.5 },
+        { note: 'Bb4', bass: 'Bb3', chord: ['Bb3', 'D4', 'G4'], dur: 0.5 },
+        { note: 'A4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 2 },
+        { note: 'F4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 2 },
+        { note: 'G4', bass: 'C3', chord: ['G3', 'Bb3', 'E4'], dur: 2 },
+        { note: 'F4', bass: 'F3', chord: ['F3', 'A3', 'C4'], dur: 4 }
+      ];
+
+      function playChiptuneNote(stepObj) {
+        if (state.soundMuted) return;
+        const ctxAudio = ensureAudioContext();
+        if (!ctxAudio) return;
+
+        const now = ctxAudio.currentTime;
+        const style = state.musicStyle;
+        const isMusicBox = style === 'musicbox' || style === 'toreador';
+        const stepUnitSec = style === 'arcade' ? 0.19 : isMusicBox ? 0.23 : 0.21;
+        const noteDurSec = stepObj.dur * stepUnitSec;
+
+        const octaveShift = isMusicBox ? 2 : 1;
+        const leadFreq = (NOTE_FREQ[stepObj.note] || 261.63) * octaveShift;
+        if (leadFreq) {
+          const osc = ctxAudio.createOscillator();
+          const gain = ctxAudio.createGain();
+          osc.type = isMusicBox ? 'sine' : 'square';
+          osc.frequency.setValueAtTime(leadFreq, now);
+
+          if (isMusicBox) {
+            const bellOsc = ctxAudio.createOscillator();
+            const bellGain = ctxAudio.createGain();
+            bellOsc.type = 'triangle';
+            bellOsc.frequency.setValueAtTime(leadFreq * 2, now);
+            bellGain.gain.setValueAtTime(0.045, now);
+            bellGain.gain.exponentialRampToValueAtTime(0.0008, now + Math.min(0.28, noteDurSec * 0.7));
+            bellOsc.connect(bellGain);
+            bellGain.connect(ctxAudio.destination);
+            bellOsc.start(now);
+            bellOsc.stop(now + noteDurSec);
+          }
+
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.linearRampToValueAtTime(isMusicBox ? 0.15 : 0.11, now + 0.012);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + noteDurSec * 0.95);
+
+          osc.connect(gain);
+          gain.connect(ctxAudio.destination);
+          osc.start(now);
+          osc.stop(now + noteDurSec);
+        }
+
+        const bassFreq = (NOTE_FREQ[stepObj.bass] || 130.81) * (isMusicBox ? 2 : 1);
+        if (bassFreq) {
+          const bassOsc = ctxAudio.createOscillator();
+          const bassGain = ctxAudio.createGain();
+          bassOsc.type = 'triangle';
+          bassOsc.frequency.setValueAtTime(bassFreq, now);
+
+          bassGain.gain.setValueAtTime(0.001, now);
+          bassGain.gain.linearRampToValueAtTime(0.09, now + 0.01);
+          bassGain.gain.exponentialRampToValueAtTime(0.001, now + noteDurSec * 0.9);
+
+          bassOsc.connect(bassGain);
+          bassGain.connect(ctxAudio.destination);
+          bassOsc.start(now);
+          bassOsc.stop(now + noteDurSec);
+        }
+
+        if (!isMusicBox && stepObj.chord && stepObj.chord.length) {
+          const arpOsc = ctxAudio.createOscillator();
+          const arpGain = ctxAudio.createGain();
+          arpOsc.type = style === 'arcade' ? 'sawtooth' : 'square';
+
+          const arpSlices = Math.max(3, Math.floor(noteDurSec / 0.055));
+          for (let i = 0; i < arpSlices; i++) {
+            const cNote = stepObj.chord[i % stepObj.chord.length];
+            const cFreq = NOTE_FREQ[cNote] || 261.63;
+            arpOsc.frequency.setValueAtTime(cFreq, now + i * 0.055);
+          }
+
+          arpGain.gain.setValueAtTime(0.035, now);
+          arpGain.gain.exponentialRampToValueAtTime(0.001, now + noteDurSec * 0.92);
+
+          arpOsc.connect(arpGain);
+          arpGain.connect(ctxAudio.destination);
+          arpOsc.start(now);
+          arpOsc.stop(now + noteDurSec);
+        }
+      }
+
+      function playFreddyHonkSfx() {
+        state.noseHonkFlash = 14;
+        if (state.soundMuted) return;
+        const ctxAudio = ensureAudioContext();
+        if (!ctxAudio) return;
+
+        const now = ctxAudio.currentTime;
+        const osc1 = ctxAudio.createOscillator();
+        const osc2 = ctxAudio.createOscillator();
+        const gain = ctxAudio.createGain();
+
+        osc1.type = 'sawtooth';
+        osc2.type = 'square';
+        osc1.frequency.setValueAtTime(490, now);
+        osc1.frequency.linearRampToValueAtTime(585, now + 0.06);
+        osc1.frequency.linearRampToValueAtTime(465, now + 0.18);
+
+        osc2.frequency.setValueAtTime(620, now);
+        osc2.frequency.linearRampToValueAtTime(740, now + 0.06);
+        osc2.frequency.linearRampToValueAtTime(590, now + 0.18);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.12, now + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.20);
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(ctxAudio.destination);
+
+        osc1.start(now);
+        osc2.start(now);
+        osc1.stop(now + 0.21);
+        osc2.stop(now + 0.21);
+      }
+
+      function playCandleOutSfx(candleIndex) {
+        if (state.soundMuted) return;
+        const ctxAudio = ensureAudioContext();
+        if (!ctxAudio) return;
+
+        const now = ctxAudio.currentTime;
+        const osc = ctxAudio.createOscillator();
+        const gain = ctxAudio.createGain();
+        osc.type = 'triangle';
+        const baseFreq = 320 + candleIndex * 45;
+        osc.frequency.setValueAtTime(baseFreq, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.16);
+
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.17);
+
+        osc.connect(gain);
+        gain.connect(ctxAudio.destination);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      }
+
+      function playBalloonPopSfx() {
+        if (state.soundMuted) return;
+        const ctxAudio = ensureAudioContext();
+        if (!ctxAudio) return;
+
+        const now = ctxAudio.currentTime;
+        const osc = ctxAudio.createOscillator();
+        const gain = ctxAudio.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(580, now);
+        osc.frequency.exponentialRampToValueAtTime(90, now + 0.11);
+
+        gain.gain.setValueAtTime(0.14, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+        osc.connect(gain);
+        gain.connect(ctxAudio.destination);
+        osc.start(now);
+        osc.stop(now + 0.13);
+      }
+
+      function playPartyHornSfx() {
+        if (state.soundMuted) return;
+        const ctxAudio = ensureAudioContext();
+        if (!ctxAudio) return;
+
+        const now = ctxAudio.currentTime;
+        const chimeNotes = [415.30, 369.99, 329.63, 246.94, 523.25];
+        chimeNotes.forEach((freq, idx) => {
+          const osc = ctxAudio.createOscillator();
+          const gain = ctxAudio.createGain();
+          osc.type = 'triangle';
+          const start = now + idx * 0.11;
+          osc.frequency.setValueAtTime(freq, start);
+
+          gain.gain.setValueAtTime(0.13, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + 0.36);
+
+          osc.connect(gain);
+          gain.connect(ctxAudio.destination);
+          osc.start(start);
+          osc.stop(start + 0.38);
+        });
+      }
+
+      function playWishStarSfx() {
+        if (state.soundMuted) return;
+        const ctxAudio = ensureAudioContext();
+        if (!ctxAudio) return;
+
+        const now = ctxAudio.currentTime;
+        const sparkleNotes = [523.25, 659.25, 783.99, 1046.5];
+        sparkleNotes.forEach((f, i) => {
+          const osc = ctxAudio.createOscillator();
+          const gain = ctxAudio.createGain();
+          osc.type = 'sine';
+          const t = now + i * 0.055;
+          osc.frequency.setValueAtTime(f, t);
+          gain.gain.setValueAtTime(0.1, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+          osc.connect(gain);
+          gain.connect(ctxAudio.destination);
+          osc.start(t);
+          osc.stop(t + 0.19);
+        });
+      }
+
+      function startBirthdayMusic() {
+        stopBirthdayMusic();
+        state.musicPlaying = true;
+        currentStepIndex = 0;
+        updateJukeboxUI();
+        scheduleNextStep();
+      }
+
+      function stopBirthdayMusic() {
+        state.musicPlaying = false;
+        if (melodyTimer) {
+          clearTimeout(melodyTimer);
+          melodyTimer = null;
+        }
+        eqBars.forEach(bar => { bar.style.height = '4px'; });
+        updateJukeboxUI();
+      }
+
+      function scheduleNextStep() {
+        if (!state.musicPlaying) return;
+
+        const stepObj = TOREADOR_AND_BIRTHDAY_SCORE[currentStepIndex];
+        playChiptuneNote(stepObj);
+
+        const style = state.musicStyle;
+        const isMusicBox = style === 'musicbox' || style === 'toreador';
+        const stepUnitMs = style === 'arcade' ? 190 : isMusicBox ? 230 : 210;
+
+        eqBars.forEach((bar) => {
+          const h = 4 + Math.floor(Math.random() * 12);
+          bar.style.height = h + 'px';
+        });
+
+        spawnFloatingNote();
+
+        currentStepIndex = (currentStepIndex + 1) % TOREADOR_AND_BIRTHDAY_SCORE.length;
+        melodyTimer = setTimeout(scheduleNextStep, stepObj.dur * stepUnitMs);
+      }
+
+      function updateJukeboxUI() {
+        if (state.musicPlaying) {
+          btnPlayPauseMusic.textContent = '⏸ PAUSE';
+          btnPlayPauseMusic.className = 'pixel-btn bg-[#d90429] text-white py-2.5';
+        } else {
+          btnPlayPauseMusic.textContent = '▶ MUSIC';
+          btnPlayPauseMusic.className = 'pixel-btn bg-[#4cc9f0] text-[#050308] py-2.5';
+        }
+      }
+
+      // Microphone Input Detection
+      async function toggleMicrophone() {
+        if (state.micActive) {
+          stopMicrophone();
+          return;
+        }
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          return;
+        }
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          const ctxAudio = ensureAudioContext();
+          const source = ctxAudio.createMediaStreamSource(stream);
+          micAnalyser = ctxAudio.createAnalyser();
+          micAnalyser.fftSize = 256;
+          source.connect(micAnalyser);
+          micDataArray = new Uint8Array(micAnalyser.frequencyBinCount);
+          micStream = stream;
+          state.micActive = true;
+          micBtnText.textContent = '🎙️ MIC ON';
+          btnMicToggle.className = 'pixel-btn bg-[#d90429] text-white py-2.5';
+        } catch (err) {
+          state.micActive = false;
+        }
+      }
+
+      function stopMicrophone() {
+        if (micStream) {
+          micStream.getTracks().forEach(t => t.stop());
+          micStream = null;
+        }
+        micAnalyser = null;
+        state.micActive = false;
+        micBtnText.textContent = '🎙️ MIC BLOW';
+        btnMicToggle.className = 'pixel-btn bg-[#38b000] text-[#050308] py-2.5';
+      }
+
+      function sampleMicVolume() {
+        if (!state.micActive || !micAnalyser || !micDataArray) return 0;
+        micAnalyser.getByteFrequencyData(micDataArray);
+        let sum = 0;
+        const bins = 28;
+        for (let i = 0; i < bins; i++) {
+          sum += micDataArray[i];
+        }
+        const avg = sum / bins;
+        return Math.min(100, Math.max(0, (avg - 22) * 1.45));
+      }
+
+      // ==========================================
+      // 5. PIXEL ART SCENE ENTITIES
+      // ==========================================
+      function initStars() {
+        state.stars = [
+          { x: 18, y: 18, phase: 0, color: '#ffb703' },
+          { x: 54, y: 14, phase: 12, color: '#7209b7' },
+          { x: 146, y: 15, phase: 25, color: '#ffb703' },
+          { x: 182, y: 19, phase: 38, color: '#d90429' }
+        ];
+      }
+
+      function initBalloons() {
+        const palette = ['#7209b7', '#ffb703', '#d90429', '#4cc9f0'];
+        state.balloons = [
+          { x: 18, baseY: 50, y: 50, color: palette[0], phase: 0, popped: false, respawnTimer: 0 },
+          { x: 35, baseY: 38, y: 38, color: palette[1], phase: 18, popped: false, respawnTimer: 0 },
+          { x: 165, baseY: 38, y: 38, color: palette[2], phase: 35, popped: false, respawnTimer: 0 },
+          { x: 182, baseY: 50, y: 50, color: palette[3], phase: 50, popped: false, respawnTimer: 0 }
+        ];
+      }
+
+      function buildCandles() {
+        state.candles = [];
+        const count = state.candleCount;
+        const cakeLeft = 68;
+        const cakeRight = 132;
+        const span = cakeRight - cakeLeft;
+
+        for (let i = 0; i < count; i++) {
+          const x = count === 1
+            ? 100
+            : Math.round(cakeLeft + (span * i) / (count - 1));
+          const style = CANDLE_COLORS[i % CANDLE_COLORS.length];
+          state.candles.push({
+            index: i,
+            x: x,
+            y: 84,
+            height: 13,
+            lit: true,
+            hp: 100,
+            flickerOffset: i * 11,
+            bodyColor: style.body,
+            stripeColor: style.stripe
+          });
+        }
+
+        state.allExtinguished = false;
+        celebrationBanner.classList.add('hidden');
+        updateCandleStatusUI();
+      }
+
+      function updateCandleStatusUI() {
+        const litCount = state.candles.filter(c => c.lit).length;
+        const total = state.candles.length;
+        candleCounterText.textContent = `${litCount} / ${total}`;
+
+        headerTitle.textContent = `HAPPY BIRTHDAY, ${state.recipientName.toUpperCase()}!`;
+        celebrationHeading.textContent = `🍕 HAPPY BIRTHDAY, ${state.recipientName.toUpperCase()}! 🍕`;
+
+        if (litCount === 0 && !state.allExtinguished) {
+          state.allExtinguished = true;
+          onAllCandlesExtinguished();
+        }
+        updateJukeboxUI();
+      }
+
+      function onAllCandlesExtinguished() {
+        celebrationSubtext.textContent = `🇵🇭 ${getPhilippinesTimeString()} • ♪ Playing Birthday Music ♪`;
+        celebrationBanner.classList.remove('hidden');
+
+        spawnConfettiBurst(100, 60, 90);
+        playPartyHornSfx();
+        startBirthdayMusic();
+      }
+
+      function spawnSmokePuff(x, y) {
+        for (let i = 0; i < 6; i++) {
+          state.smokeParticles.push({
+            x: x + (Math.random() * 4 - 2),
+            y: y - 2,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: -0.35 - Math.random() * 0.35,
+            life: 28 + Math.floor(Math.random() * 16),
+            maxLife: 44
+          });
+        }
+      }
+
+      function spawnConfettiBurst(cx, cy, count) {
+        const colors = ['#ffb703', '#d90429', '#7209b7', '#38b000', '#4cc9f0', '#ffffff'];
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 0.6 + Math.random() * 2.4;
+          state.confettiParticles.push({
+            x: cx + (Math.random() * 16 - 8),
+            y: cy + (Math.random() * 10 - 5),
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 1.2,
+            color: colors[i % colors.length],
+            size: Math.random() > 0.5 ? 2 : 1,
+            life: 95 + Math.floor(Math.random() * 50)
+          });
+        }
+      }
+
+      function spawnFloatingNote() {
+        const colors = ['#ffb703', '#d90429', '#c77dff', '#4cc9f0'];
+        state.floatingNotes.push({
+          x: 68 + Math.floor(Math.random() * 64),
+          y: 66,
+          vy: -0.45,
+          phase: Math.random() * 10,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          life: 65
+        });
+      }
+
+      function extinguishCandle(candle) {
+        if (!candle.lit) return;
+        candle.lit = false;
+        candle.hp = 0;
+        spawnSmokePuff(candle.x, candle.y - candle.height - 2);
+        playCandleOutSfx(candle.index);
+        updateCandleStatusUI();
+      }
+
+      // ==========================================
+      // 6. FNaF PIXEL ART RENDERING (200x150)
+      // ==========================================
+      function pxRect(x, y, w, h, color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+      }
+
+      function drawFnafPizzeriaRoom() {
+        const roomDark = state.allExtinguished && (state.tick % 24 < 12);
+        pxRect(0, 0, 200, 150, '#110d19');
+        pxRect(0, 0, 200, 56, '#181224');
+        pxRect(0, 68, 200, 58, '#140f1d');
+
+        for (let by = 10; by < 52; by += 8) {
+          for (let bx = (by % 16 === 0 ? 4 : 12); bx < 190; bx += 20) {
+            pxRect(bx, by, 10, 3, '#1f182e');
+          }
+        }
+
+        // Purple Starry Stage Curtains
+        pxRect(0, 0, 16, 124, '#3c096c');
+        pxRect(16, 0, 4, 124, '#240046');
+        pxRect(184, 0, 16, 124, '#3c096c');
+        pxRect(180, 0, 4, 124, '#240046');
+        for (let cy = 12; cy < 115; cy += 18) {
+          pxRect(6, cy, 2, 2, '#ffb703');
+          pxRect(190, cy + 6, 2, 2, '#ffb703');
+        }
+
+        // FNaF Checkered Wall Stripe
+        pxRect(20, 56, 160, 2, '#d90429');
+        for (let cx = 20; cx < 180; cx += 4) {
+          const isWhite = ((cx / 4) % 2 === 0);
+          pxRect(cx, 58, 4, 4, isWhite ? '#e2e8f0' : '#09060f');
+          pxRect(cx, 62, 4, 4, isWhite ? '#09060f' : '#e2e8f0');
+        }
+        pxRect(20, 66, 160, 2, '#d90429');
+
+        // Hanging Ceiling Stars
+        state.stars.forEach(s => {
+          pxRect(s.x, 0, 1, s.y, '#3a2d4c');
+          pxRect(s.x - 2, s.y, 5, 5, s.color);
+          pxRect(s.x - 1, s.y - 1, 3, 7, s.color);
+          pxRect(s.x, s.y + 1, 1, 1, '#ffffff');
+        });
+
+        // Party Banner above Freddy
+        pxRect(68, 10, 64, 14, '#241734');
+        pxRect(69, 11, 62, 12, '#0f0a17');
+        const bannerColors = ['#d90429', '#ffb703', '#38b000', '#4cc9f0', '#9b5de5', '#ff5e97'];
+        for (let i = 0; i < 10; i++) {
+          pxRect(72 + i * 6, 15, 4, 5, bannerColors[i % bannerColors.length]);
+        }
+        if (roomDark) {
+          pxRect(70, 12, 60, 10, 'rgba(255, 183, 3, 0.08)');
+        }
+      }
+
+      function drawAnimatronics() {
+        const musicGlow = state.musicPlaying && (state.tick % 14 < 7);
+
+        // 1. BONNIE (Left, x=48)
+        const bx = 48;
+        const by = 66;
+        pxRect(bx - 6, by - 22, 4, 10, '#5a189a');
+        pxRect(bx - 5, by - 20, 2, 6, '#c77dff');
+        pxRect(bx + 2, by - 22, 4, 10, '#5a189a');
+        pxRect(bx + 3, by - 20, 2, 6, '#c77dff');
+        pxRect(bx - 8, by - 12, 16, 13, '#5a189a');
+        pxRect(bx - 6, by - 5, 12, 6, '#9d4edd');
+        pxRect(bx - 2, by - 5, 4, 2, '#10002b');
+        pxRect(bx - 5, by - 9, 3, 3, musicGlow ? '#ff0055' : '#ffffff');
+        pxRect(bx + 2, by - 9, 3, 3, musicGlow ? '#ff0055' : '#ffffff');
+        pxRect(bx - 4, by - 8, 1, 1, '#d90429');
+        pxRect(bx + 3, by - 8, 1, 1, '#d90429');
+        pxRect(bx - 9, by + 1, 18, 20, '#5a189a');
+        pxRect(bx - 5, by + 4, 10, 14, '#9d4edd');
+        pxRect(bx - 4, by + 2, 8, 3, '#d90429');
+
+        // 2. FREDDY FAZBEAR (Center, x=100)
+        const fx = 100;
+        const fy = 48;
+        pxRect(fx - 7, fy - 14, 14, 2, '#111111');
+        pxRect(fx - 5, fy - 22, 10, 8, '#111111');
+        pxRect(fx - 5, fy - 16, 10, 2, '#d90429');
+        pxRect(fx - 12, fy - 13, 5, 5, '#6f4518');
+        pxRect(fx - 11, fy - 12, 3, 3, '#a47148');
+        pxRect(fx + 7, fy - 13, 5, 5, '#6f4518');
+        pxRect(fx + 8, fy - 12, 3, 3, '#a47148');
+        pxRect(fx - 10, fy - 12, 20, 16, '#7f4f24');
+        pxRect(fx - 8, fy - 4, 16, 7, '#b08968');
+        const noseColor = state.noseHonkFlash > 0 ? '#ffb703' : '#111111';
+        pxRect(fx - 3, fy - 4, 6, 3, noseColor);
+        pxRect(fx - 2, fy - 4, 2, 1, '#ffffff');
+        const eyeBg = state.allExtinguished ? (musicGlow ? '#4deeea' : '#ffb703') : '#ffffff';
+        pxRect(fx - 6, fy - 9, 4, 4, eyeBg);
+        pxRect(fx + 2, fy - 9, 4, 4, eyeBg);
+        pxRect(fx - 5, fy - 8, 2, 2, '#0077b6');
+        pxRect(fx + 3, fy - 8, 2, 2, '#0077b6');
+        pxRect(fx - 7, fy - 11, 5, 1, '#111111');
+        pxRect(fx + 2, fy - 11, 5, 1, '#111111');
+        pxRect(fx - 12, fy + 4, 24, 24, '#7f4f24');
+        pxRect(fx - 7, fy + 8, 14, 16, '#b08968');
+        pxRect(fx - 5, fy + 5, 10, 4, '#111111');
+        pxRect(fx - 1, fy + 6, 2, 2, '#333333');
+
+        // 3. CHICA (Right, x=152)
+        const cx = 152;
+        const cy = 66;
+        pxRect(cx - 2, cy - 16, 4, 4, '#ffb703');
+        pxRect(cx - 8, cy - 12, 16, 13, '#ffb703');
+        pxRect(cx - 4, cy - 5, 8, 5, '#fb8500');
+        pxRect(cx - 3, cy - 3, 6, 1, '#111111');
+        pxRect(cx - 5, cy - 9, 3, 3, musicGlow ? '#4deeea' : '#ffffff');
+        pxRect(cx + 2, cy - 9, 3, 3, musicGlow ? '#4deeea' : '#ffffff');
+        pxRect(cx - 4, cy - 8, 1, 1, '#b5179e');
+        pxRect(cx + 3, cy - 8, 1, 1, '#b5179e');
+        pxRect(cx - 9, cy + 1, 18, 20, '#ffb703');
+        pxRect(cx - 6, cy + 2, 12, 11, '#ffffff');
+        pxRect(cx - 4, cy + 4, 8, 2, '#d90429');
+        pxRect(cx - 3, cy + 7, 6, 2, '#7209b7');
+      }
+
+      function drawBalloons() {
+        state.balloons.forEach(b => {
+          if (b.popped) return;
+          const sway = Math.round(Math.sin((state.tick + b.phase) * 0.06));
+          pxRect(b.x + sway, b.y + 8, 1, 16, '#8d7bb8');
+
+          pxRect(b.x - 5, b.y - 6, 11, 11, b.color);
+          pxRect(b.x - 6, b.y - 4, 13, 7, b.color);
+          pxRect(b.x - 3, b.y - 7, 7, 13, b.color);
+          pxRect(b.x - 1, b.y + 6, 3, 2, b.color);
+          pxRect(b.x - 4, b.y - 4, 2, 3, '#ffffff');
+        });
+      }
+
+      function drawTableAndCupcake() {
+        pxRect(0, 124, 200, 26, '#1f142e');
+        pxRect(0, 124, 200, 4, '#d90429');
+
+        for (let x = 0; x < 200; x += 8) {
+          pxRect(x, 128, 4, 4, '#e2e8f0');
+          pxRect(x + 4, 128, 4, 4, '#111111');
+          pxRect(x, 132, 4, 4, '#111111');
+          pxRect(x + 4, 132, 4, 4, '#e2e8f0');
+        }
+
+        // Party Hat on Left
+        pxRect(20, 120, 10, 4, '#38b000');
+        pxRect(22, 116, 6, 4, '#ffb703');
+        pxRect(24, 112, 2, 4, '#d90429');
+        pxRect(24, 110, 2, 2, '#ffffff');
+
+        // Carl the Cupcake on Right
+        const cupX = 166;
+        const cupY = 114;
+        pxRect(cupX - 5, cupY + 4, 10, 6, '#ffb703');
+        pxRect(cupX - 3, cupY + 4, 2, 6, '#d4a373');
+        pxRect(cupX + 1, cupY + 4, 2, 6, '#d4a373');
+        pxRect(cupX - 6, cupY - 2, 12, 6, '#ff5e97');
+        pxRect(cupX - 4, cupY - 4, 8, 2, '#ff8fab');
+        pxRect(cupX - 4, cupY - 1, 3, 3, '#ffffff');
+        pxRect(cupX + 1, cupY - 1, 3, 3, '#ffffff');
+        pxRect(cupX - 3, cupY, 1, 1, '#ffb703');
+        pxRect(cupX + 2, cupY, 1, 1, '#ffb703');
+        pxRect(cupX - 1, cupY - 8, 2, 4, '#ffffff');
+        if (!state.allExtinguished) {
+          pxRect(cupX - 1, cupY - 10, 2, 2, '#ffb703');
+        }
+
+        // Cake Pedestal
+        pxRect(42, 118, 116, 4, '#cbd5e1');
+        pxRect(46, 122, 108, 2, '#64748b');
+      }
+
+      function drawPixelCake() {
+        const flavor = FLAVORS[state.flavorKey] || FLAVORS.fazbear;
+
+        pxRect(50, 98, 100, 20, flavor.spongeBot);
+        pxRect(52, 100, 96, 16, flavor.spongeMid);
+        pxRect(50, 108, 100, 3, flavor.filling);
+
+        pxRect(48, 96, 104, 4, flavor.icing);
+        for (let dx = 52; dx <= 144; dx += 8) {
+          const dripH = (dx % 16 === 0) ? 5 : 3;
+          pxRect(dx, 100, 4, dripH, flavor.icing);
+          pxRect(dx, 100 + dripH, 4, 1, flavor.icingShadow);
+        }
+
+        for (let i = 0; i < 12; i++) {
+          const sx = 56 + i * 8;
+          const sy = 103 + (i % 3) * 4;
+          pxRect(sx, sy, 2, 1, flavor.sprinkles[i % flavor.sprinkles.length]);
+        }
+
+        pxRect(62, 84, 76, 13, flavor.spongeMid);
+        pxRect(64, 86, 72, 10, flavor.spongeTop);
+        pxRect(62, 91, 76, 2, flavor.filling);
+
+        pxRect(60, 82, 80, 4, flavor.icing);
+        for (let dx = 64; dx <= 132; dx += 8) {
+          const dripH = (dx % 16 === 0) ? 4 : 2;
+          pxRect(dx, 86, 4, dripH, flavor.icing);
+          pxRect(dx, 86 + dripH, 4, 1, flavor.icingShadow);
+        }
+
+        for (let cx = 54; cx <= 146; cx += 18) {
+          pxRect(cx - 1, 94, 3, 3, flavor.cherry);
+          pxRect(cx - 1, 94, 1, 1, '#ffffff');
+        }
+      }
+
+      function drawCandlesAndFlames() {
+        const windLean = state.blowPower > 10 ? Math.min(4, Math.ceil(state.blowPower / 25)) : 0;
+
+        state.candles.forEach(c => {
+          const topY = c.y - c.height;
+
+          pxRect(c.x - 2, topY, 4, c.height, c.bodyColor);
+          for (let sy = topY + 2; sy < c.y - 1; sy += 4) {
+            pxRect(c.x - 2, sy, 2, 2, c.stripeColor);
+            pxRect(c.x, sy + 2, 2, 2, c.stripeColor);
+          }
+
+          pxRect(c.x - 1, topY - 2, 2, 2, '#111111');
+
+          if (c.lit) {
+            const fTick = state.tick + c.flickerOffset;
+            const tall = (fTick % 12) < 6 ? 1 : 0;
+            const sway = windLean + ((fTick % 8 < 4) ? 0 : 1);
+
+            ctx.fillStyle = 'rgba(255, 183, 3, 0.20)';
+            ctx.fillRect(c.x - 5 + windLean, topY - 10, 10, 10);
+
+            pxRect(c.x - 2 + sway, topY - 7 - tall, 4, 5 + tall, '#ff6b35');
+            pxRect(c.x - 1 + sway, topY - 9 - tall, 2, 2, '#ff9f1c');
+            pxRect(c.x - 1 + sway, topY - 6, 2, 4, '#ffd166');
+            pxRect(c.x - 1 + Math.floor(sway / 2), topY - 4, 2, 2, '#ffffff');
+          }
+        });
+      }
+
+      function drawSecurityCamHUD() {
+        const c = '#e2e8f0';
+        pxRect(4, 4, 10, 1, c);
+        pxRect(4, 4, 1, 10, c);
+        pxRect(186, 4, 10, 1, c);
+        pxRect(195, 4, 1, 10, c);
+        pxRect(4, 145, 10, 1, c);
+        pxRect(4, 136, 1, 10, c);
+        pxRect(186, 145, 10, 1, c);
+        pxRect(195, 136, 1, 10, c);
+
+        if (state.tick % 40 < 24) {
+          pxRect(8, 8, 4, 4, '#d90429');
+        }
+
+        if (state.tick % 17 === 0) {
+          const sy = 15 + ((state.tick * 7) % 120);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+          ctx.fillRect(0, sy, 200, 2);
+        }
+      }
+
+      function drawParticles() {
+        state.smokeParticles.forEach(p => {
+          const alpha = Math.max(0.15, p.life / p.maxLife);
+          ctx.fillStyle = `rgba(203, 213, 225, ${alpha.toFixed(2)})`;
+          const sz = p.life < 18 ? 3 : 2;
+          ctx.fillRect(Math.round(p.x), Math.round(p.y), sz, sz);
+        });
+
+        state.confettiParticles.forEach(p => {
+          pxRect(p.x, p.y, p.size, p.size, p.color);
+        });
+
+        state.floatingNotes.forEach(n => {
+          const nx = Math.round(n.x + Math.sin(n.phase + state.tick * 0.1) * 3);
+          const ny = Math.round(n.y);
+          pxRect(nx, ny, 3, 2, n.color);
+          pxRect(nx + 2, ny - 4, 1, 5, n.color);
+          pxRect(nx + 3, ny - 4, 2, 1, n.color);
+        });
+      }
+
+      // ==========================================
+      // 7. SIMULATION LOOP & INTERACTIONS
+      // ==========================================
+      function updateSimulation() {
+        state.tick++;
+        if (state.noseHonkFlash > 0) state.noseHonkFlash--;
+
+        const micLevel = sampleMicVolume();
+        if (state.isHoldingBlow) {
+          state.blowPower = Math.min(100, state.blowPower + 4.2);
+        } else if (micLevel > 8) {
+          state.blowPower = micLevel;
+        } else {
+          state.blowPower = Math.max(0, state.blowPower - 5);
+        }
+
+        windBarFill.style.width = `${Math.round(state.blowPower)}%`;
+
+        if (state.blowPower > 20) {
+          state.candles.forEach(c => {
+            if (c.lit) {
+              const drain = (state.blowPower / 26) * (0.8 + Math.random() * 0.6);
+              c.hp -= drain;
+              if (c.hp <= 0) {
+                extinguishCandle(c);
+              }
+            }
+          });
+        }
+
+        state.balloons.forEach(b => {
+          if (b.popped) {
+            b.respawnTimer--;
+            if (b.respawnTimer <= 0) {
+              b.popped = false;
+              b.y = 140;
+            }
+          } else {
+            const targetY = b.baseY + Math.sin((state.tick + b.phase) * 0.05) * 3.5;
+            b.y += (targetY - b.y) * 0.1;
+          }
+        });
+
+        for (let i = state.smokeParticles.length - 1; i >= 0; i--) {
+          const p = state.smokeParticles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life--;
+          if (p.life <= 0) state.smokeParticles.splice(i, 1);
+        }
+
+        if (state.musicPlaying && state.tick % 8 === 0) {
+          spawnConfettiBurst(20 + Math.random() * 160, 8, 3);
+        }
+
+        for (let i = state.confettiParticles.length - 1; i >= 0; i--) {
+          const p = state.confettiParticles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.045;
+          p.vx *= 0.98;
+          p.life--;
+          if (p.life <= 0 || p.y > 152) {
+            state.confettiParticles.splice(i, 1);
+          }
+        }
+
+        for (let i = state.floatingNotes.length - 1; i >= 0; i--) {
+          const n = state.floatingNotes[i];
+          n.y += n.vy;
+          n.life--;
+          if (n.life <= 0) state.floatingNotes.splice(i, 1);
+        }
+      }
+
+      function renderScene() {
+        drawFnafPizzeriaRoom();
+        drawAnimatronics();
+        drawBalloons();
+        drawTableAndCupcake();
+        drawPixelCake();
+        drawCandlesAndFlames();
+        drawParticles();
+        drawSecurityCamHUD();
+      }
+
+      function loop() {
+        updateSimulation();
+        renderScene();
+        requestAnimationFrame(loop);
+      }
+
+      function getCanvasCoords(clientX, clientY) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      function interactAtPoint(px, py, isClick) {
+        ensureAudioContext();
+
+        // Click Freddy's nose to honk!
+        if (isClick && Math.hypot(px - 100, py - 45) <= 10) {
+          playFreddyHonkSfx();
+          spawnConfettiBurst(100, 44, 14);
+        }
+
+        // Swipe/click candle flames
+        state.candles.forEach(c => {
+          if (!c.lit) return;
+          const flameX = c.x;
+          const flameY = c.y - c.height - 4;
+          if (Math.hypot(px - flameX, py - flameY) <= 11) {
+            extinguishCandle(c);
+          }
+        });
+
+        // Pop balloons
+        if (isClick) {
+          state.balloons.forEach(b => {
+            if (b.popped) return;
+            if (Math.hypot(px - b.x, py - b.y) <= 9) {
+              b.popped = true;
+              b.respawnTimer = 150;
+              playBalloonPopSfx();
+              spawnConfettiBurst(b.x, b.y, 18);
+            }
+          });
+        }
+      }
+
+      canvas.addEventListener('pointerdown', (e) => {
+        state.pointerDown = true;
+        const pt = getCanvasCoords(e.clientX, e.clientY);
+        interactAtPoint(pt.x, pt.y, true);
+      });
+
+      canvas.addEventListener('pointermove', (e) => {
+        if (!state.pointerDown) return;
+        const pt = getCanvasCoords(e.clientX, e.clientY);
+        interactAtPoint(pt.x, pt.y, false);
+      });
+
+      window.addEventListener('pointerup', () => {
+        state.pointerDown = false;
+        state.isHoldingBlow = false;
+        btnHoldBlow.classList.remove('active-press');
+      });
+
+      btnHoldBlow.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        ensureAudioContext();
+        state.isHoldingBlow = true;
+        btnHoldBlow.classList.add('active-press');
+      });
+
+      window.addEventListener('keydown', (e) => {
+        const tag = document.activeElement ? document.activeElement.tagName : '';
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+        if (e.code === 'Space') {
+          e.preventDefault();
+          ensureAudioContext();
+          state.isHoldingBlow = true;
+          btnHoldBlow.classList.add('active-press');
+        }
+      });
+
+      window.addEventListener('keyup', (e) => {
+        if (e.code === 'Space') {
+          state.isHoldingBlow = false;
+          btnHoldBlow.classList.remove('active-press');
+        }
+      });
+
+      btnRelight.addEventListener('click', () => {
+        ensureAudioContext();
+        stopBirthdayMusic();
+        state.candles.forEach(c => {
+          c.lit = true;
+          c.hp = 100;
+        });
+        state.allExtinguished = false;
+        celebrationBanner.classList.add('hidden');
+        playWishStarSfx();
+        updateCandleStatusUI();
+      });
+
+      btnMicToggle.addEventListener('click', () => {
+        ensureAudioContext();
+        toggleMicrophone();
+      });
+
+      btnMuteToggle.addEventListener('click', () => {
+        state.soundMuted = !state.soundMuted;
+        if (state.soundMuted) {
+          btnMuteToggle.textContent = '🔇 OFF';
+          btnMuteToggle.className = 'pixel-btn bg-[#3d1e5d] text-[#d90429]';
+        } else {
+          ensureAudioContext();
+          btnMuteToggle.textContent = '🔊 ON';
+          btnMuteToggle.className = 'pixel-btn bg-[#221a2e] text-[#38b000]';
+        }
+      });
+
+      btnPlayPauseMusic.addEventListener('click', () => {
+        ensureAudioContext();
+        if (state.musicPlaying) {
+          stopBirthdayMusic();
+        } else {
+          startBirthdayMusic();
+        }
+      });
+
+      selectMusicStyle.addEventListener('change', (e) => {
+        state.musicStyle = e.target.value;
+        if (state.musicPlaying) {
+          startBirthdayMusic();
+        }
+      });
+
+      btnPartyHorn.addEventListener('click', () => {
+        ensureAudioContext();
+        playPartyHornSfx();
+        spawnConfettiBurst(100, 50, 45);
+      });
+
+      btnCustomizeToggle.addEventListener('click', () => {
+        customizerPanel.classList.toggle('hidden');
+      });
+
+      btnCloseCustomizer.addEventListener('click', () => {
+        customizerPanel.classList.add('hidden');
+      });
+
+      btnApplyCustomization.addEventListener('click', () => {
+        ensureAudioContext();
+        state.recipientName = inputRecipient.value.trim() || 'Sam';
+        state.candleCount = parseInt(selectCandleCount.value, 10) || 5;
+        state.flavorKey = selectCakeFlavor.value || 'fazbear';
+
+        stopBirthdayMusic();
+        buildCandles();
+        playWishStarSfx();
+        customizerPanel.classList.add('hidden');
+      });
+
+      window.addEventListener('load', () => {
+        initStars();
+        initBalloons();
+        buildCandles();
+        loop();
+      });
+    })();
+  </script>
+</body>
+</html>
