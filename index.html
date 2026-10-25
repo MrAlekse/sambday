@@ -163,7 +163,7 @@
         <!-- Live Philippines Time + Quick Controls -->
         <div class="flex flex-wrap items-center gap-2">
           <div class="bg-[#09060f] border-2 border-[#38b000] px-2.5 py-1 flex items-center gap-1.5 text-base sm:text-lg">
-            <span class="text-[#38b000]">🇵🇭 PH:</span>
+            <span class="text-[#38b000]">PH:</span>
             <span id="phLiveClock" class="text-[#ffb703] font-bold tracking-wider">--:--:-- PM</span>
           </div>
 
@@ -204,7 +204,7 @@
         <div id="celebrationBanner" class="hidden absolute top-10 left-1/2 -translate-x-1/2 z-10 pointer-events-none w-[90%] max-w-sm">
           <div class="pixel-box-pink px-3 py-2 text-center animate-bounce">
             <p id="celebrationHeading" class="font-pixel-title text-xs sm:text-sm text-[#ffb703]">
-              🍕 HAPPY BIRTHDAY, SAM! 🍕
+              HAPPY BIRTHDAY, SAM!
             </p>
             <p id="celebrationSubtext" class="text-base sm:text-lg text-[#38b000] mt-0.5">
               ♪ Playing Birthday Music Box ♪
@@ -457,7 +457,7 @@
       function updatePhilippinesClock() {
         const timeStr = getPhilippinesTimeString();
         phLiveClock.textContent = timeStr;
-        canvasClockOverlay.textContent = timeStr + ' PHT';
+        canvasClockOverlay.textContent = timeStr;
       }
 
       setInterval(updatePhilippinesClock, 1000);
@@ -895,7 +895,7 @@
         candleCounterText.textContent = `${litCount} / ${total}`;
 
         headerTitle.textContent = `HAPPY BIRTHDAY, ${state.recipientName.toUpperCase()}!`;
-        celebrationHeading.textContent = `🍕 HAPPY BIRTHDAY, ${state.recipientName.toUpperCase()}! 🍕`;
+        celebrationHeading.textContent = `HAPPY BIRTHDAY, ${state.recipientName.toUpperCase()}! `;
 
         if (litCount === 0 && !state.allExtinguished) {
           state.allExtinguished = true;
@@ -905,7 +905,7 @@
       }
 
       function onAllCandlesExtinguished() {
-        celebrationSubtext.textContent = `🇵🇭 ${getPhilippinesTimeString()} • ♪ Playing Birthday Music ♪`;
+        celebrationSubtext.textContent = `${getPhilippinesTimeString()} `;
         celebrationBanner.classList.remove('hidden');
 
         spawnConfettiBurst(100, 60, 90);
